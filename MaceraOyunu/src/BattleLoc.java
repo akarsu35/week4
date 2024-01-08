@@ -120,8 +120,24 @@ public class BattleLoc extends Location{
                         player.getInventory().setWater(true);
                     }
                     if(player.getInventory().isFirewood()&&player.getInventory().isFood()&&player.getInventory().isWater()){
-                        System.out.println("Tebrikler tüm ödülleri topladınız.\nÇıkmak isterseniz Güvenli Ev'e dönüş yapabilirsiniz.");
+                        System.out.println("Tebrikler tüm ödülleri topladınız." +
+                                "\nÇıkmak isterseniz Güvenli Ev'e dönüş yapabilirsiniz." +
+                                "\nDevam etmek için herhangi bir tuşa basınız.");
 
+                        int select=input.nextInt();
+                        Location location=null;
+                        switch (select){
+                            case 1:
+                                location =new SafeHouse(player);
+
+                                break;
+                            default:
+                                player.getInventory().setWater(false);
+                                player.getInventory().setFirewood(false);
+                                player.getInventory().setFood(false);
+                                break;
+
+                        }
                     }
 
                 }
